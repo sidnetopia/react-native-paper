@@ -10,6 +10,10 @@ type Props = $RemoveChildren<typeof TouchableRipple> & {
    */
   children: React.ReactNode;
   /**
+   * Number of lines
+   */
+  numberOfLines?: number
+  /**
    * Align the text to the right. Generally monetary or number fields are aligned to right.
    */
   numeric?: boolean;
@@ -51,12 +55,12 @@ type Props = $RemoveChildren<typeof TouchableRipple> & {
  * MD Guidelines (https://github.com/callstack/react-native-paper/issues/2381).
  */
 
-const DataTableCell = ({ children, style, numeric, ...rest }: Props) => (
+const DataTableCell = ({ children, style, numeric, numberOfLines, ...rest }: Props) => (
   <TouchableRipple
     {...rest}
     style={[styles.container, numeric && styles.right, style]}
   >
-    <Text numberOfLines={1}>{children}</Text>
+    <Text numberOfLines={numberOfLines || 1}>{children}</Text>
   </TouchableRipple>
 );
 
